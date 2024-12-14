@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.631,C:\Users\Офиг\Documents\Embarcadero\Studio\Projects\File1.cpp=C:\Гоблинко\programm VS\c++\перевод систем\File1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.755,=C:\Users\Офиг\Documents\Embarcadero\Studio\Projects\File1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.532,C:\Users\Офиг\Documents\Embarcadero\Studio\Projects\Project1PCH1.h=C:\Гоблинко\programm VS\c++\перевод систем\Project1PCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.744,=C:\Users\Офиг\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.668,C:\Users\Офиг\Documents\Embarcadero\Studio\Projects\Project1.cbproj=C:\Гоблинко\programm VS\c++\перевод систем\Project1.cbproj</Transaction>
+  </Transactions>
+</BorlandProject>

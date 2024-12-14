@@ -1,0 +1,118 @@
+program pr_proc1;
+
+{$APPTYPE CONSOLE}
+
+{$R *.res}
+
+uses
+  System.SysUtils,
+  func in 'func.pas';
+
+//
+
+procedure edit_1el(var ar:td;i,j:int32; new:int32);
+var n,m : uint32;
+begin
+  if ar=nil then begin
+                   writeln('Массив отсутствует.');
+                   exit;
+                 end;
+  n:=length(ar);
+  m:=length(ar[0]);
+  if (i>=0)and (i<n) and (j>=0) and (j<m) then
+       ar[i,j]:=new
+  else writeln('Ошибка в индексах.');
+end;
+//
+var ar:td;
+    ar_w: td1;
+    i,j,n,m,k:int16;
+    fname:string;
+    diap:uint32;
+    S, s1,s2,s3:ansistring;
+                    //1    6    11
+    s_com:ansistring='gen  inputout  edit exit ';
+    n_com:int8;
+//
+(*procedure test(s1:ansistring; var s2:ansisting; out s3:ansistring);
+begin
+writeln('Adress copy s1[1]= ',int32(@s1[1]),' Adress var s2[1]=',
+int32(@s2[1]){,' Adress out s3[1]= ',int32(@s3[1])});
+//writeln(s3); //пока не доступна по чтению
+//s3[1]:='1';// и по записи к отдельным элементам
+s3:='test';// только так !!!
+writeln(s3);
+end;     *)
+//
+begin
+  repeat
+  write(#10,'> ');
+  readln(s);
+  ar_w:=seqtowords(s);
+  {for s in ar_w do
+    writeln(s);}
+  // Определение номера команды
+  i:=pos(ar_w[0],s_com);
+  if i<1 then continue;
+  n_com:=(i-1) div 5;
+  case n_com of
+  // Генерация массива
+  0: begin
+      write('Randseed=');
+      readln(randseed);
+      write('Введите n m : ');
+      readln(n,m);
+      write('Введите diap для random : ');
+      readln(diap);
+      ar:=nil;//иначе утечка памяти !
+      ar:=gen_ar_int(n,m,randseed,diap);
+     end;
+  // Ввод массива
+  1: begin
+      write('Имя файла ввода массива :');
+      readln(fname);
+      ar:=nil;//иначе утечка памяти !
+      ar:=inp_ar(fname);
+     end;
+  // Вывод массива
+  2: begin
+      if ar=nil then begin
+                     writeln('Массив отсутствует.');
+                     continue;
+                     end;
+      write('Имя файла вывода массива :');
+      readln(fname);
+      ar_out(ar,fname,5);
+     end;
+  3: begin
+       write('Введите координаты элемента : ');
+       readln(i,j);
+       writeln('Введите значение нового элемента : ');
+       readln(k);
+       edit_1el(ar,i,j,k);
+     end;
+  4: begin
+       ar:=nil;
+       exit;
+     end;
+  // ошибка в команде
+  else begin
+       writeln('Ошибка в команде.');
+       end;
+  end;
+  //Contin;
+  until false;
+end.
+
+//
+{writeln('Test parameters.. ');
+  s1:='Проверка механизма ';
+  s2:='передачи параметров';
+  s3:=s1+s2;
+  writeln(s3);
+  writeln('Adress s1[1]= ',int32(@s1[1]),
+  ' Adress s2[1]=',int32(@s2[1]),' Adress s3[1]=',int32(@s3[1]));
+  contin;
+  test(s1,s2,s3);
+  writeln(s3);
+  contin; }

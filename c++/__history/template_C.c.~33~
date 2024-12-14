@@ -1,0 +1,24 @@
+﻿#include <stdio.h>
+#include <windows.h>
+#include <conio.h>
+
+int main()
+{
+    SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+
+	int i,j,n;
+	char c;
+    m:
+	printf("Enter i = ");
+	scanf("%d", &i);
+	printf("Enter j = ");
+	scanf("%d", &j);
+	printf("i+j = %d\n", i+j);
+	printf("i-j = %d\n", i - j);
+	printf("i*j = %d\n", i * j);
+   // printf("%d", i  j);
+	goto m;
+	getch();
+    //return 0;
+}

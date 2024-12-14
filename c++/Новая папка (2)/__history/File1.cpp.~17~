@@ -1,0 +1,26 @@
+#include <iostream>
+#include <windows.h>
+using namespace std;
+
+int main()
+{   do {
+    SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+    char c;
+    char ln ='\n';
+	char sch[1000] = "Привет, всем!"; // это массив символов для 999 символов
+    char sch1[20];
+    char sch2[10]; //включая '\0'
+    char* psch;
+    int i=257;
+	double r=3.14;
+
+    cout<< "sch : "<<sch <<" size"<<size(sch)<<" sizeof"<<
+	sizeof(sch)<< " Длина strlen(sch)"<<strlen(sch)<<ln;
+
+	cin >> sch2;
+	cout << sch2 << ln;
+    cout << *(&sch2[0] + 1)<< ln;
+	system("pause");
+	} while (1);
+}

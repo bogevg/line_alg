@@ -1,0 +1,20 @@
+#include <iostream> // cin, cout
+#include <windows.h>
+#include <conio.h> //для getch()
+
+using namespace std;
+
+int main()
+{
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+    printf("Я хочу знать C\n");
+    cout << "I want to know C++" << endl;
+    cout << "Я хочу знать C++" << endl;
+    //
+    // insert code here
+    system("pause");
+    //
+    getch();
+    //return 0;
+}

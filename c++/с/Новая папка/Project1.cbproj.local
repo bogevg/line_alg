@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2023.10.20 20:14:14.521,=C:\Users\Офиг\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>2023.10.20 20:14:14.526,=C:\Users\Офиг\Documents\Embarcadero\Studio\Projects\File1.c</Transaction>
+    <Transaction>2023.10.20 20:14:56.661,C:\Гоблинко\programm VS\c++\Новая папка\Project1PCH1.h=C:\Users\Офиг\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>2023.10.20 20:14:56.760,C:\Гоблинко\programm VS\c++\Новая папка\File1.c=C:\Users\Офиг\Documents\Embarcadero\Studio\Projects\File1.c</Transaction>
+    <Transaction>2023.10.20 20:14:56.796,C:\Гоблинко\programm VS\c++\Новая папка\Project1.cbproj=C:\Users\Офиг\Documents\Embarcadero\Studio\Projects\Project1.cbproj</Transaction>
+  </Transactions>
+</BorlandProject>

@@ -1,0 +1,26 @@
+#include <iostream> // cin, cout
+#include <windows.h>
+#include <conio.h> //для getch()
+
+using namespace std;
+
+int main()
+{
+    SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	unsigned __int8 i,j;
+	while(1){
+	cout <<  "Enter i: ";
+	cin >> i;
+	cout << "Enter j: " ;
+	cin >> j;
+	cout << "i & j = " << (i & j) << "\ni | j = " << (i | j) << "\ni ^ j = " << (i ^ j) <<"\n";
+    cout << "~i = " << (~i)<<"\n";
+	}
+	//
+    // insert code here
+	system("pause");
+	//
+	getch();
+	//return 0;
+}

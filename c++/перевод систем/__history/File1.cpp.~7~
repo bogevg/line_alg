@@ -1,0 +1,32 @@
+#include <iostream>
+#include <tchar.h>
+
+using namespace std;
+
+int main()
+{
+	int n,ss,c;
+	char s[10];
+
+	while (1) {
+		cout << "Enter n: ";
+		cin >> n;
+		cout << "Enter ss: ";
+		cin >> ss;
+		ñ = 0;
+		while ( n > 0){
+			s[c]= char(n % ss);
+			n/=ss;
+			++c;
+		}
+		int i;
+		for (i = 10; i > 0; i--) {
+				if (s[i] != "") {
+					 count << s[i];
+				}
+		}
+
+		s = "";
+	}
+
+}

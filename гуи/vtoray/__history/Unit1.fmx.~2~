@@ -1,0 +1,28 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Z'
+  ClientHeight = 480
+  ClientWidth = 332
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object Button1: TButton
+    Position.X = 232.000000000000000000
+    Position.Y = 394.000000000000000000
+    Size.Width = 92.000000000000000000
+    Size.Height = 62.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'addtoolbuttonbordered'
+    TabOrder = 0
+    Text = 'Button1'
+    OnClick = Button1Click
+    object FloatKeyAnimation1: TFloatKeyAnimation
+      Duration = 0.200000002980232200
+      Keys = <>
+      PropertyName = 'Height'
+      StartFromCurrent = False
+    end
+  end
+end

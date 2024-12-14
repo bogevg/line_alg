@@ -1,0 +1,221 @@
+program pr_proc1;
+
+{$APPTYPE CONSOLE}
+
+{$R *.res}
+
+uses
+  System.SysUtils;
+
+type td = array of array of integer;
+     td1=array of ansistring;
+//
+procedure ar_out(ar:td;fname:string; k:uint8=5); //
+var i, j :integer;
+    f:textfile;
+    c: ansichar;
+label m;
+begin
+m:
+if fname<>'' then fname:=fname+'.txt';
+if fileexists(fname) then begin
+                          write('Файл с этим именем уже существует. Продолжить (y,n)?'#10);
+                          readln(c);
+                          if c<>'y' then
+                           begin
+                             writeln('Введите новое имя файла :');
+                             readln(fname);
+                             goto m;
+                           end;
+                          end;
+
+assignfile(f,fname);
+rewrite(f);
+writeln(f,length(ar),'  ',length(ar[0]));
+for i:=0 to high(ar) do
+begin
+for j:=0 to high(ar[0]) do
+    write(f,ar[i,j]:k);
+writeln(f);
+end;
+closefile(f);
+if fname<>'' then writeln('Файл данных ',fname,' записан');
+end;
+//Service
+procedure contin;
+begin
+  write('Press Enter to continue. . .');
+  readln;
+  writeln;
+end;
+// Функция генерации массива данных
+function gen_ar_int(n,m:int16; r:int32; d:uint16=1000):td;
+var i,j:int32;
+begin
+   //writeln('n=',n);
+   if (n>0)and (m>0) then setlength(result,n,m)
+    else begin
+           writeln('Ошибка в параметрах n,m gen_ar_int');
+           result:=nil;
+           exit;
+         end;
+  setlength(result,n,m);
+  //if r=-1 then randomize else randseed:=r;
+  for i:=0 to n-1 do
+	for j:=0 to m-1 do
+       result[i,j]:=random(d);
+end;
+//
+function inp_ar(fname:string):td;
+var f:textfile;
+    i,j,n,m:int32;
+begin
+  result:=nil;
+  if fname='' then begin
+                     write('Введите n (rows), m (colums) : ');
+                     readln(n,m);
+                   end
+  else begin
+       fname:=fname+'.txt';
+       if not fileexists(fname) then begin
+                                     writeln('Файл не найден');
+                                     exit;
+                                     end;
+       end;
+  assignfile(f,fname);
+  reset(f);
+  if fname<>'' then readln(f,n,m);
+  setlength(result,n,m);
+  for I := 0 to n-1 do
+   begin
+     if fname='' then writeln('Ведите ',m,' элементов строки');
+     for j := 0 to m-1 do
+       read(f,result[i,j]);
+     readln(f);
+   end;
+   closefile(f);
+end;
+// Преобразование предложения в массив слов
+function seqtowords(s: ansistring): td1;
+var
+  c: ansichar;
+  st: ansistring;
+begin
+  s := trim(s) + ' ';
+  result := nil;
+  st := '';
+  for c in s do
+    if c in ['0' .. '9','_','a' .. 'z'] then
+      st := st + c
+    else if st <> '' then
+    begin
+      result := result + [st];
+      st := '';
+    end;
+end;
+procedure edit_1el(var ar:td;i,j:int32; new:int32);
+var n,m : uint32;
+begin
+  if ar=nil then begin
+                   writeln('Массив отсутствует.');
+                   break;
+                 end;
+  n:=length(ar);
+  m:=length(ar[0]);
+  if (i>=0)and (i<n) and (j>=0) and (j<m) then
+       ar[i,j]:=new
+  else writeln('Ошибка в индексах.');
+end;
+//
+var ar:td;
+    ar_w: td1;
+    i,j,n,m,k:int16;
+    fname:string;
+    diap:uint32;
+    S, s1,s2,s3:ansistring;
+                    //1    6    11
+    s_com:ansistring='gen  inputout  edit exit ';
+    n_com:int8;
+//
+(*procedure test(s1:ansistring; var s2:ansisting; out s3:ansistring);
+begin
+writeln('Adress copy s1[1]= ',int32(@s1[1]),' Adress var s2[1]=',
+int32(@s2[1]){,' Adress out s3[1]= ',int32(@s3[1])});
+//writeln(s3); //пока не доступна по чтению
+//s3[1]:='1';// и по записи к отдельным элементам
+s3:='test';// только так !!!
+writeln(s3);
+end;     *)
+//
+begin
+  repeat
+  write(#10,'> ');
+  readln(s);
+  ar_w:=seqtowords(s);
+  {for s in ar_w do
+    writeln(s);}
+  // Определение номера команды
+  i:=pos(ar_w[0],s_com);
+  if i<1 then continue;
+  n_com:=(i-1) div 5;
+  case n_com of
+  // Генерация массива
+  0: begin
+      write('Randseed=');
+      readln(randseed);
+      write('Введите n m : ');
+      readln(n,m);
+      write('Введите diap для random : ');
+      readln(diap);
+      ar:=nil;//иначе утечка памяти !
+      ar:=gen_ar_int(n,m,randseed,diap);
+     end;
+  // Ввод массива
+  1: begin
+      write('Имя файла ввода массива :');
+      readln(fname);
+      ar:=nil;//иначе утечка памяти !
+      ar:=inp_ar(fname);
+     end;
+  // Вывод массива
+  2: begin
+      if ar=nil then begin
+                     writeln('Массив отсутствует.');
+                     continue;
+                     end;
+      write('Имя файла вывода массива :');
+      readln(fname);
+      ar_out(ar,fname,5);
+     end;
+  3: begin
+       write('Введите координаты элемента : ');
+       readln(i,j);
+       writeln('Введите значение нового элемента : ');
+       readln(k);
+       edit_1el(ar,i,j,k);
+     end;
+  4: begin
+       ar:=nil;
+       exit;
+     end;
+  // ошибка в команде
+  else begin
+       writeln('Ошибка в команде.');
+       end;
+  end;
+  //Contin;
+  until false;
+end.
+
+//
+{writeln('Test parameters.. ');
+  s1:='Проверка механизма ';
+  s2:='передачи параметров';
+  s3:=s1+s2;
+  writeln(s3);
+  writeln('Adress s1[1]= ',int32(@s1[1]),
+  ' Adress s2[1]=',int32(@s2[1]),' Adress s3[1]=',int32(@s3[1]));
+  contin;
+  test(s1,s2,s3);
+  writeln(s3);
+  contin; }

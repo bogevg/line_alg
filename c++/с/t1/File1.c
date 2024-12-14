@@ -1,0 +1,13 @@
+#include <stdio.h>
+#include <windows.h>
+
+int main()
+{
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+    // insert code here
+    printf("I want to know C\n");
+    printf("Я хочу знать C\n");
+    getc(stdin);
+    //return 0;
+}

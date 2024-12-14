@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.847,=D:\Занятия 2023-2024\2 год_а\pr_in_gen_out_array\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.198,D:\Занятия 2023-2024\2 год_а\pr_in_gen_out_array\Unit1.pas=D:\Занятия 2023-2024\2 год_а\pr_in_gen_out_array\func.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.699,=D:\Занятия 2023-2024\2 общий\pr_LA23\New1.hlp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.735,=D:\Занятия 2023-2024\2 общий\pr_LA23\New1.hlp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.137,D:\Занятия 2023-2024\2 общий\pr_LA23\Win32\Debug\Help.hlp=D:\Занятия 2023-2024\2 общий\pr_LA23\New1.hlp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.813,D:\Занятия 2023-2024\2 общий\pr_LA23\pr_LA.dproj=D:\Занятия 2023-2024\2 общий\pr_LA23\pr_proc1.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.385,D:\Embarcadero\Project1.dproj=D:\Занятия 2023-2024\2 год_а\proc_out_array\pr_proc1.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.814,D:\Занятия 2023-2024\2 общий\pr_LA23\Unit1.pas=D:\Занятия 2023-2024\2 общий\pr_LA23\service.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.886,=D:\Занятия 2023-2024\2 общий\pr_LA23\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>

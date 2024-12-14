@@ -1,0 +1,30 @@
+﻿#include <stdio.h>
+#include <windows.h>
+#include <conio.h>
+
+int main()
+{
+    SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+
+	unsigned int  i1;
+	signed int i2;
+	short int i3;
+	long int i4;
+	long long int i5;
+	int i6;
+	printf("size int = %d\n",sizeof(i6));
+	printf("size unsigned int = %d\n",sizeof(i1));
+	printf("size signed int = %d\n",sizeof(i2));
+	printf("size short int = %d\n",sizeof(i3));
+	printf("size long int = %d\n",sizeof(i4));
+	printf("size long long int = %d\n",sizeof(i5));
+
+
+
+
+
+
+	getch();
+    //return 0;
+}

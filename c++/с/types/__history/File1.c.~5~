@@ -1,0 +1,20 @@
+#include <stdio.h>
+#include <windows.h>
+
+int main()
+{
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	int i;
+    float r1;
+    double r2;
+    char c;
+	short j;
+	printf("size int = %i\n",sizeof(i));
+	printf("size short = %i\n",sizeof(j));
+	printf("size float = %d\n",sizeof(r1));
+	printf("size double = %d\n",sizeof(r2));
+    printf("size char = %d\n",sizeof(c));
+    getc(stdin);
+    //return 0;
+}
